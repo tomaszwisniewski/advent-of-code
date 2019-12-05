@@ -1,7 +1,10 @@
 MODULES_MASSES = './input.txt'.freeze
 
 def calc_fuel_for(mass)
-  (mass / 3).ceil - 2
+  fuel_mass = (mass / 3).floor - 2
+
+  return 0 if fuel_mass <= 0
+  fuel_mass + calc_fuel_for(fuel_mass)
 end
 
 def with_each_operator
